@@ -25,7 +25,7 @@
 
         html, body {
             height: 100%;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         body {
@@ -36,13 +36,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 16px;
             position: relative;
+            min-height: 100vh;
         }
 
         /* Floating hearts background */
         .hearts {
-            position: absolute;
+            position: fixed;
             inset: 0;
             pointer-events: none;
             overflow: hidden;
@@ -83,24 +84,17 @@
         .card-wrap {
             position: relative;
             z-index: 5;
-            max-width: 900px;
+            max-width: 500px;
             width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 360px;
-            gap: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             align-items: center;
-        }
-
-        @media (max-width: 880px) {
-            .card-wrap {
-                grid-template-columns: 1fr;
-                max-width: 560px;
-            }
         }
 
         /* Main card */
         .card {
-            padding: 36px;
+            padding: 24px;
             border-radius: var(--card-radius);
             background: linear-gradient(135deg, rgba(255,255,255,0.75), rgba(255,255,255,0.45));
             backdrop-filter: blur(8px) saturate(120%);
@@ -111,6 +105,7 @@
             gap: 20px;
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         /* Header section */
@@ -118,11 +113,14 @@
             display: flex;
             gap: 16px;
             align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
         }
 
         .badge {
             font-family: 'Great Vibes', cursive;
-            font-size: 48px;
+            font-size: 42px;
             color: var(--accent-2);
             text-shadow: 0 6px 22px rgba(199,91,255,0.18);
         }
@@ -140,16 +138,16 @@
 
         /* Message box */
         .message-box {
-            padding: 22px;
+            padding: 20px;
             border-radius: 16px;
             background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.5));
             border: 1px solid rgba(255,255,255,0.5);
-            min-height: 160px;
+            min-height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            font-size: 22px;
+            font-size: 20px;
             line-height: 1.4;
             color: var(--text-main);
             font-weight: 500;
@@ -161,8 +159,17 @@
         /* Controls */
         .controls {
             display: flex;
+            flex-direction: column;
             gap: 12px;
             align-items: center;
+            width: 100%;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
@@ -170,12 +177,17 @@
             background: linear-gradient(90deg, var(--accent), var(--accent-2));
             border: none;
             color: white;
-            padding: 12px 18px;
+            padding: 14px 18px;
             border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(199,91,255,0.18);
             transition: all 0.3s ease;
+            font-size: 14px;
+            flex: 1;
+            min-width: 140px;
+            max-width: 200px;
+            text-align: center;
         }
 
         .btn:hover {
@@ -196,17 +208,18 @@
 
         /* Side card */
         .side-card {
-            padding: 22px;
+            padding: 20px;
             border-radius: 20px;
             background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
             border: 1px solid rgba(255,255,255,0.5);
             display: flex;
             flex-direction: column;
             gap: 16px;
-            align-items: stretch;
+            align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         /* Photo frame */
@@ -220,7 +233,7 @@
 
         .photo-frame img {
             width: 100%;
-            max-width: 240px;
+            max-width: 220px;
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(199,91,255,0.18);
             object-fit: cover;
@@ -236,7 +249,7 @@
         /* Photo placeholder */
         .photo-placeholder {
             width: 100%;
-            height: 240px;
+            height: 220px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -266,28 +279,36 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 12px;
             margin-top: 10px;
-            font-size: 14px;
+            font-size: 16px;
             color: var(--muted);
+            width: 100%;
         }
 
         .counter-btn {
             background: transparent;
             border: none;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
             color: var(--accent);
             transition: all 0.2s ease;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .counter-btn:hover {
             transform: scale(1.2);
+            background: rgba(255,255,255,0.5);
         }
 
         /* Special effects */
         .love-explosion {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -316,7 +337,7 @@
 
         /* Romantic glow effect */
         .romantic-glow {
-            position: absolute;
+            position: fixed;
             width: 200px;
             height: 200px;
             border-radius: 50%;
@@ -340,7 +361,7 @@
         /* Date display */
         .date-display {
             font-family: 'Dancing Script', cursive;
-            font-size: 16px;
+            font-size: 18px;
             color: var(--accent-2);
             text-align: center;
             margin-top: 10px;
@@ -363,6 +384,7 @@
             border-radius: 12px;
             background: rgba(255,255,255,0.5);
             border: 1px solid rgba(255,255,255,0.3);
+            width: 100%;
         }
 
         .memory-title {
@@ -370,6 +392,7 @@
             color: var(--text-main);
             margin-bottom: 8px;
             text-align: center;
+            font-size: 16px;
         }
 
         .memory-text {
@@ -387,6 +410,7 @@
             color: var(--muted);
             font-size: 13px;
             text-align: center;
+            width: 100%;
         }
 
         /* Message reveal animation */
@@ -440,6 +464,56 @@
             outline: 3px solid rgba(199,91,255,0.12);
             outline-offset: 3px;
         }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px;
+            }
+            
+            .side-card {
+                padding: 18px;
+            }
+            
+            .message-box {
+                padding: 18px;
+                font-size: 18px;
+                min-height: 120px;
+            }
+            
+            .btn {
+                padding: 12px 16px;
+                font-size: 13px;
+                min-width: 120px;
+            }
+            
+            .photo-placeholder, .photo-frame img {
+                height: 200px;
+            }
+            
+            .title {
+                font-size: 18px;
+            }
+            
+            .badge {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .btn-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                max-width: 100%;
+            }
+            
+            .photo-placeholder, .photo-frame img {
+                height: 180px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -454,7 +528,7 @@
             <div class="hero">
                 <div class="badge">💖</div>
                 <div>
-                    <div id="hero-title" class="title">My Dearest Love, This is for You</div>
+                    <div id="hero-title" class="title">My Dearest Love</div>
                     <div class="subtitle">A digital expression of my endless love for you</div>
                 </div>
             </div>
@@ -464,17 +538,18 @@
             </div>
 
             <div class="controls">
-                <button id="nextBtn" class="btn">Another Love Note</button>
-                <button id="surpriseBtn" class="btn ghost">Write Your Own</button>
-                <button id="loveExplosionBtn" class="btn">Love Explosion!</button>
-
-                <div style="flex:1"></div>
-
-                <button id="memoryBtn" class="btn ghost">Our Special Memory</button>
+                <div class="btn-row">
+                    <button id="nextBtn" class="btn">Another Love Note</button>
+                    <button id="surpriseBtn" class="btn ghost">Write Your Own</button>
+                </div>
+                <div class="btn-row">
+                    <button id="loveExplosionBtn" class="btn">Love Explosion!</button>
+                    <button id="memoryBtn" class="btn ghost">Our Memory</button>
+                </div>
             </div>
             
             <div class="love-counter">
-                <span>How much I love you:</span>
+                <span>My love for you:</span>
                 <button id="decreaseLove" class="counter-btn">-</button>
                 <span id="loveCount">143</span>
                 <button id="increaseLove" class="counter-btn">+</button>
@@ -504,7 +579,7 @@
                 <img id="herPhoto" src="" alt="Her Photo" style="display:none" />
             </div>
             
-            <div class="date-display" id="specialDate">Since the day we met: <span id="daysTogether">2600</span>days</div>
+            <div class="date-display" id="specialDate">Since we met: <span id="daysTogether">0</span> days</div>
 
             <div style="margin-top:12px;font-size:13px;color:var(--muted);text-align:center;">
                 Click to add your photo and make this card truly yours
@@ -589,7 +664,7 @@
         let memoryIndex = 0;
         
         // Calculate days since a special date (you can change this to your actual date)
-        const specialDate = new Date('2018-10-10'); // Change this to your special date
+        const specialDate = new Date('2023-01-01'); // Change this to your special date
         const today = new Date();
         const timeDiff = today.getTime() - specialDate.getTime();
         const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
