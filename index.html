@@ -36,7 +36,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
+            padding: 20px;
             position: relative;
             min-height: 100vh;
         }
@@ -80,21 +80,44 @@
             }
         }
 
-        /* Main card container */
+        /* Main card container - Responsive grid */
         .card-wrap {
             position: relative;
             z-index: 5;
-            max-width: 500px;
+            max-width: 1200px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 30px;
             align-items: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .card-wrap {
+                grid-template-columns: 1fr 340px;
+                gap: 25px;
+                max-width: 900px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-wrap {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-wrap {
+                gap: 20px;
+            }
         }
 
         /* Main card */
         .card {
-            padding: 24px;
+            padding: 36px;
             border-radius: var(--card-radius);
             background: linear-gradient(135deg, rgba(255,255,255,0.75), rgba(255,255,255,0.45));
             backdrop-filter: blur(8px) saturate(120%);
@@ -102,53 +125,95 @@
             box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
             position: relative;
             overflow: hidden;
-            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 28px;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 24px;
+                gap: 18px;
+            }
         }
 
         /* Header section */
         .hero {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            flex-direction: column;
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                gap: 16px;
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         .badge {
             font-family: 'Great Vibes', cursive;
-            font-size: 42px;
+            font-size: 52px;
             color: var(--accent-2);
             text-shadow: 0 6px 22px rgba(199,91,255,0.18);
         }
 
+        @media (max-width: 768px) {
+            .badge {
+                font-size: 46px;
+            }
+        }
+
         .title {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 600;
             color: var(--text-main);
         }
 
+        @media (max-width: 768px) {
+            .title {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 20px;
+            }
+        }
+
         .subtitle {
             color: var(--muted);
-            font-size: 14px;
+            font-size: 15px;
+        }
+
+        @media (max-width: 480px) {
+            .subtitle {
+                font-size: 14px;
+            }
         }
 
         /* Message box */
         .message-box {
-            padding: 20px;
+            padding: 24px;
             border-radius: 16px;
             background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.5));
             border: 1px solid rgba(255,255,255,0.5);
-            min-height: 140px;
+            min-height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            font-size: 20px;
-            line-height: 1.4;
+            font-size: 22px;
+            line-height: 1.5;
             color: var(--text-main);
             font-weight: 500;
             font-family: 'Great Vibes', cursive;
@@ -156,38 +221,56 @@
             position: relative;
         }
 
+        @media (max-width: 768px) {
+            .message-box {
+                padding: 22px;
+                font-size: 20px;
+                min-height: 160px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .message-box {
+                padding: 20px;
+                font-size: 18px;
+                min-height: 140px;
+            }
+        }
+
         /* Controls */
         .controls {
             display: flex;
-            flex-direction: column;
             gap: 12px;
             align-items: center;
-            width: 100%;
+            flex-wrap: wrap;
         }
 
-        .btn-row {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-            justify-content: center;
-            flex-wrap: wrap;
+        @media (max-width: 768px) {
+            .controls {
+                gap: 10px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .controls {
+                flex-direction: column;
+                gap: 8px;
+            }
         }
 
         .btn {
             background: linear-gradient(90deg, var(--accent), var(--accent-2));
             border: none;
             color: white;
-            padding: 14px 18px;
+            padding: 14px 20px;
             border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(199,91,255,0.18);
             transition: all 0.3s ease;
-            font-size: 14px;
-            flex: 1;
-            min-width: 140px;
-            max-width: 200px;
-            text-align: center;
+            font-size: 15px;
+            white-space: nowrap;
         }
 
         .btn:hover {
@@ -206,20 +289,48 @@
             background: rgba(255,255,255,0.5);
         }
 
+        @media (max-width: 768px) {
+            .btn {
+                padding: 12px 18px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
         /* Side card */
         .side-card {
-            padding: 20px;
+            padding: 28px;
             border-radius: 20px;
             background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
             border: 1px solid rgba(255,255,255,0.5);
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 20px;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            width: 100%;
+            height: fit-content;
+        }
+
+        @media (max-width: 768px) {
+            .side-card {
+                padding: 24px;
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .side-card {
+                padding: 20px;
+                gap: 16px;
+            }
         }
 
         /* Photo frame */
@@ -233,7 +344,7 @@
 
         .photo-frame img {
             width: 100%;
-            max-width: 220px;
+            max-width: 260px;
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(199,91,255,0.18);
             object-fit: cover;
@@ -246,10 +357,16 @@
             box-shadow: 0 12px 30px rgba(199,91,255,0.3);
         }
 
+        @media (max-width: 1024px) {
+            .photo-frame img {
+                max-width: 220px;
+            }
+        }
+
         /* Photo placeholder */
         .photo-placeholder {
             width: 100%;
-            height: 220px;
+            height: 260px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -274,12 +391,18 @@
             fill: var(--accent);
         }
 
+        @media (max-width: 1024px) {
+            .photo-placeholder {
+                height: 220px;
+            }
+        }
+
         /* Love counter */
         .love-counter {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 16px;
             margin-top: 10px;
             font-size: 16px;
             color: var(--muted);
@@ -370,8 +493,8 @@
         /* Secret message */
         .secret-message {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
+            bottom: 12px;
+            right: 12px;
             font-size: 10px;
             color: rgba(43,11,31,0.3);
             cursor: pointer;
@@ -380,7 +503,7 @@
         /* Memory section */
         .memory-section {
             margin-top: 15px;
-            padding: 15px;
+            padding: 18px;
             border-radius: 12px;
             background: rgba(255,255,255,0.5);
             border: 1px solid rgba(255,255,255,0.3);
@@ -465,53 +588,14 @@
             outline-offset: 3px;
         }
 
-        /* Mobile-specific adjustments */
-        @media (max-width: 480px) {
-            .card {
-                padding: 20px;
-            }
-            
-            .side-card {
-                padding: 18px;
-            }
-            
-            .message-box {
-                padding: 18px;
-                font-size: 18px;
-                min-height: 120px;
-            }
-            
-            .btn {
-                padding: 12px 16px;
-                font-size: 13px;
-                min-width: 120px;
-            }
-            
-            .photo-placeholder, .photo-frame img {
-                height: 200px;
-            }
-            
-            .title {
-                font-size: 18px;
-            }
-            
-            .badge {
-                font-size: 38px;
-            }
+        /* Spacer for desktop layout */
+        .spacer {
+            flex: 1;
         }
 
-        @media (max-width: 360px) {
-            .btn-row {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                max-width: 100%;
-            }
-            
-            .photo-placeholder, .photo-frame img {
-                height: 180px;
+        @media (max-width: 768px) {
+            .spacer {
+                display: none;
             }
         }
     </style>
@@ -528,7 +612,7 @@
             <div class="hero">
                 <div class="badge">💖</div>
                 <div>
-                    <div id="hero-title" class="title">My Dearest Love</div>
+                    <div id="hero-title" class="title">My Dearest Love, This is for You</div>
                     <div class="subtitle">A digital expression of my endless love for you</div>
                 </div>
             </div>
@@ -538,18 +622,17 @@
             </div>
 
             <div class="controls">
-                <div class="btn-row">
-                    <button id="nextBtn" class="btn">Another Love Note</button>
-                    <button id="surpriseBtn" class="btn ghost">Write Your Own</button>
-                </div>
-                <div class="btn-row">
-                    <button id="loveExplosionBtn" class="btn">Love Explosion!</button>
-                    <button id="memoryBtn" class="btn ghost">Our Memory</button>
-                </div>
+                <button id="nextBtn" class="btn">Another Love Note</button>
+                <button id="surpriseBtn" class="btn ghost">Write Your Own</button>
+                <button id="loveExplosionBtn" class="btn">Love Explosion!</button>
+
+                <div class="spacer"></div>
+
+                <button id="memoryBtn" class="btn ghost">Our Special Memory</button>
             </div>
             
             <div class="love-counter">
-                <span>My love for you:</span>
+                <span>How much I love you:</span>
                 <button id="decreaseLove" class="counter-btn">-</button>
                 <span id="loveCount">143</span>
                 <button id="increaseLove" class="counter-btn">+</button>
@@ -566,7 +649,7 @@
         </section>
 
         <aside class="side-card" aria-label="Photo and memories">
-            <div style="font-weight:600;font-size:18px;color:var(--text-main);margin-bottom:10px;text-align:center;">My Beautiful Love ❤️</div>
+            <div style="font-weight:600;font-size:20px;color:var(--text-main);margin-bottom:10px;text-align:center;">My Beautiful Love ❤️</div>
 
             <div class="photo-frame">
                 <div id="photoPlaceholder" class="photo-placeholder">
@@ -579,9 +662,9 @@
                 <img id="herPhoto" src="" alt="Her Photo" style="display:none" />
             </div>
             
-            <div class="date-display" id="specialDate">Since we met: <span id="daysTogether">0</span> days</div>
+            <div class="date-display" id="specialDate">Since the day we met: <span id="daysTogether">0</span> days</div>
 
-            <div style="margin-top:12px;font-size:13px;color:var(--muted);text-align:center;">
+            <div style="margin-top:12px;font-size:14px;color:var(--muted);text-align:center;">
                 Click to add your photo and make this card truly yours
             </div>
         </aside>
@@ -664,7 +747,7 @@
         let memoryIndex = 0;
         
         // Calculate days since a special date (you can change this to your actual date)
-        const specialDate = new Date('2018-10-10'); // Change this to your special date
+        const specialDate = new Date('2019-10-10'); // Change this to your special date
         const today = new Date();
         const timeDiff = today.getTime() - specialDate.getTime();
         const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
